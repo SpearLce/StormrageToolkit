@@ -7,6 +7,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.junit.Before
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,5 +21,11 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.illidancstormrage.mainapp", appContext.packageName)
+    }
+
+    @Before
+    fun createAppContext(){
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+
     }
 }
