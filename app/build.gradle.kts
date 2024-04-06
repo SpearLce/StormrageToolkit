@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt") //启用注解器kapt
 }
 
 android {
@@ -40,6 +41,35 @@ android {
 dependencies {
 
     implementation(project(":utils"))
+
+
+    //room
+    val roomVersion = "2.5.2"
+    //AndroidX Room 运行时库
+    implementation("androidx.room:room-runtime:$roomVersion")
+    // To use Kotlin annotation processing tool 		(kapt)  kotlin版
+//    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+    // optional - Test helpers
+    testImplementation("androidx.room:room-testing:$roomVersion")
+
+    // 协程
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    // 协程 - 支持安卓
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+
+
+    val lifecycleVersion = "2.6.2"
+    // Lifecycles only (without ViewModel or LiveData) 生命周期感知组件
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+    // LiveData 组件
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+
+
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")

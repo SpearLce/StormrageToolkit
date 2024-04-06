@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt") //启用注解器kapt
 }
 
 android {
@@ -35,6 +36,19 @@ android {
 }
 
 dependencies {
+
+    //room
+    val roomVersion = "2.5.2"
+    //AndroidX Room 运行时库
+    implementation("androidx.room:room-runtime:$roomVersion")
+    // To use Kotlin annotation processing tool 		(kapt)  kotlin版
+    kapt("androidx.room:room-compiler:$roomVersion")
+//    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+    // optional - Test helpers
+    testImplementation("androidx.room:room-testing:$roomVersion")
+
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
