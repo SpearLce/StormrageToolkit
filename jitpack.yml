@@ -1,0 +1,2 @@
+jdk:
+  - openjdk17 # Gradle7以上，仅支持jdk11以上来工作 8.2 -- jdk17

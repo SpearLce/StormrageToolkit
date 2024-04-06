@@ -48,7 +48,6 @@ dependencies {
     //AndroidX Room 运行时库
     implementation("androidx.room:room-runtime:$roomVersion")
     // To use Kotlin annotation processing tool 		(kapt)  kotlin版
-//    annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")

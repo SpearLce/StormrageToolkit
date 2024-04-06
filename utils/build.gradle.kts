@@ -2,7 +2,26 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt") //启用注解器kapt
+
+    //发布插件
+    `maven-publish` // 插件必须的
 }
+
+//发布配置
+publishing { //发布配置
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.illidancstormrage.StormrageToolkit"
+            artifactId = "utils" //表示项目具体的构件ID，即产品或模块的名字。
+            version = "1.0" //义化版本控制规范，如major.minor.patch（主版本.次版本.修订版本）
+            afterEvaluate {
+                from(components["release"]) // 安卓release —— "java" - jar
+            }
+        }
+    }
+}
+
+
 
 android {
     namespace = "com.illidancstormrage.utils"
@@ -41,9 +60,8 @@ dependencies {
     val roomVersion = "2.5.2"
     //AndroidX Room 运行时库
     implementation("androidx.room:room-runtime:$roomVersion")
-    // To use Kotlin annotation processing tool 		(kapt)  kotlin版
+    // To use Kotlin annotation processing tool  (kapt)  kotlin版
     kapt("androidx.room:room-compiler:$roomVersion")
-//    annotationProcessor("androidx.room:room-compiler:$roomVersion")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")
     // optional - Test helpers
